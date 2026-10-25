@@ -129,7 +129,7 @@ var l = (e) => Array.isArray(e) ? e : [e], u = (e, t, n) => {
 		children: [{
 			tagName: "button",
 			textContent: "show",
-			attributes: { class: "btn btn-primary btn-sm" }
+			attributes: { class: "btn btn-primary btn-sm ks-btn-show" }
 		}]
 	},
 	buildOption: {
@@ -168,6 +168,15 @@ var l = (e) => Array.isArray(e) ? e : [e], u = (e, t, n) => {
 		tagName: "th",
 		textContent: "options",
 		attributes: { class: "py-3 px-3 fw-semibold text-uppercase small" }
+	},
+	tdWithButtonSaveWarning: {
+		tagName: "td",
+		attributes: { class: "py-2 px-3 text-center" },
+		children: [{
+			tagName: "button",
+			textContent: "save",
+			attributes: { class: "btn btn-warning btn-sm ks-btn-save" }
+		}]
 	}
 }, g = (e, t, n, r) => {
 	let i = n, a = h, o = e.templateKey, s = a[o];
