@@ -1,0 +1,25 @@
+{
+  "name": "json-renderers-build-table-options",
+  "version": "1.2.1",
+  "description": "Focused table specification builder with configurable rows and cells",
+  "type": "module",
+  "main": "src/index.js",
+  "exports": {
+    ".": "./src/index.js"
+  },
+  "files": [
+    "src",
+    "README.md"
+  ],
+  "scripts": {
+    "test": "node test/v24/index.js",
+    "dev": "vite",
+    "build": "vite build"
+  },
+  "dependencies": {
+    "json-instructions": "^1.8.3"
+  },
+  "devDependencies": {
+    "vite": "^8.3.4"
+  }
+}
