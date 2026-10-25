@@ -32,25 +32,34 @@ var e = (e) => typeof e == "object" && !!e && !Array.isArray(e), t = (t, n) => {
 	return typeof u == "string" ? r(u, c) : (typeof u != "object" || !u || ("textContent" in u && (u.textContent = i(u?.textContent, c)), "attributes" in u && (u.attributes = t(u?.attributes, c)), "children" in u && (u.children = n(u?.children, c))), u);
 };
 s(c);
-// node_modules/json-write-path/src/v2/utils/toArray.js
-var l = (e) => Array.isArray(e) ? e : [e], u = (e, t, n) => {
+// node_modules/json-transformer-funcs-one-dimension/src/v6/guard/index.js
+var l = (e, t) => {
+	if (!Array.isArray(e)) throw TypeError("inSource must be an Array");
+	if (e.length === 0) throw Error("inSource cannot be empty");
+	for (let t = 0; t < e.length; t++) if (!e[t] || typeof e[t] != "object") throw TypeError(`inSource[${t}] must be an object`);
+	if (!t || typeof t != "object" && typeof t != "string") throw TypeError("inTemplate must be an object or string");
+	return !0;
+}, u = (e, t) => {
+	let n = e, r = t;
+	return l(n, r), n.map((e) => c(e, r));
+}, d = (e) => Array.isArray(e) ? e : [e], f = (e, t, n) => {
 	e[t] = n;
-}, d = {
-	set: u,
+}, p = {
+	set: f,
 	push: (e, t, n) => {
-		e[t].push(...l(n));
+		e[t].push(...d(n));
 	},
 	unshift: (e, t, n) => {
-		e[t].unshift(...l(n));
+		e[t].unshift(...d(n));
 	},
 	pushToRows: (e, t, n) => {
 		e[t].forEach((e) => {
-			e.children.push(...structuredClone(l(n)));
+			e.children.push(...structuredClone(d(n)));
 		});
 	},
 	unshiftToRows: (e, t, n) => {
 		e[t].forEach((e) => {
-			e.children.unshift(...structuredClone(l(n)));
+			e.children.unshift(...structuredClone(d(n)));
 		});
 	},
 	unshiftSerialToRows: (e, t, n) => {
@@ -59,23 +68,33 @@ var l = (e) => Array.isArray(e) ? e : [e], u = (e, t, n) => {
 			r.textContent = t + 1, e.children.unshift(r);
 		});
 	}
-}, f = (e, t) => {
+}, m = (e, t) => {
 	if (e?.attributes?.["data-role"] === t) return e;
 	for (let n of e?.children ?? []) {
-		let e = f(n, t);
+		let e = m(n, t);
 		if (e) return e;
 	}
 	return null;
-}, p = (e, t) => {
-	let n = t.dataRole ? f(e[t.fileName], t.dataRole) : e[t.fileName], r = [...t.filePath ?? []], i = r.pop();
+}, h = (e, t) => {
+	let n = t.dataRole ? m(e[t.fileName], t.dataRole) : e[t.fileName], r = [...t.filePath ?? []], i = r.pop();
 	return {
 		parent: r.reduce((e, t) => e[t], n),
 		key: i
 	};
-}, m = (e, t, n) => {
-	let { parent: r, key: i } = p(e, t);
-	(d[t.action] || u)(r, i, n);
-}, h = {
+}, g = (e, t, n) => {
+	let { parent: r, key: i } = h(e, t);
+	(p[t.action] || f)(r, i, n);
+}, _ = (e, t) => {
+	if (e?.attributes?.["data-role"] === t) return e;
+	for (let n of e?.children ?? []) {
+		let e = _(n, t);
+		if (e) return e;
+	}
+	return null;
+}, v = (e, t) => {
+	let n = e[t.fileName], r = t.dataRole ? _(n, t.dataRole) : n;
+	return (t.filePath ?? []).reduce((e, t) => e[t], r);
+}, y = {
 	buildBodyTr: {
 		tagName: "tr",
 		attributes: { class: "align-middle" },
@@ -178,31 +197,34 @@ var l = (e) => Array.isArray(e) ? e : [e], u = (e, t, n) => {
 			attributes: { class: "btn btn-warning btn-sm ks-btn-save" }
 		}]
 	}
-}, g = (e, t, n, r) => {
-	let i = n, a = h, o = e.templateKey, s = a[o];
-	i && console.log("singleInstruction ; ", o, s), m(t, e.destinationPath, s);
-}, _ = (e, t, n, r) => {
+}, b = {
+	applyTemplate: c,
+	fromCollection: u
+}, x = (e, t) => e?.sourcePath === null ? null : v(t, e.sourcePath), S = (e, t, n, r) => {
+	let i = y[e.templateKey], a, o = x(e, t);
+	a = o === null ? i : b[e.func](o, i), g(t, e.destinationPath, a);
+}, C = (e, t, n, r) => {
 	e.forEach((e) => {
-		g(e, t, n, r);
+		S(e, t, n, r);
 	});
-}, v = (e, t, n) => {
+}, w = (e, t, n) => {
 	let r = !(!e || typeof e != "object" || Array.isArray(e)), i = `guards/base: ${r ? "passed" : "failed"}`;
 	return Array.isArray(n) && n.push(i), t && console.log(i), r;
-}, y = (e, t, n) => {
+}, T = (e, t, n) => {
 	let r = !(!e || typeof e != "object" || Array.isArray(e)), i = `guards/options: ${r ? "passed" : "failed"}`;
 	return Array.isArray(n) && n.push(i), t && console.log(i), r;
-}, b = (e, t, n) => {
+}, E = (e, t, n) => {
 	let r = typeof e == "boolean", i = `guards/showLog: ${r ? "passed" : "failed"}`;
 	return Array.isArray(n) && n.push(i), t && console.log(i), r;
-}, x = (e, t, n) => {
+}, D = (e, t, n) => {
 	let r = Array.isArray(e), i = `guards/returnLog: ${r ? "passed" : "failed"}`;
 	return r ? e.push(i) : Array.isArray(n) && n.push(i), t && console.log(i), r;
-}, S = ({ options: e, base: t, showLog: n, returnLog: r }) => ({
-	base: v(t, n, r),
-	options: y(e, n, r),
-	showLog: b(n, n, r),
-	returnLog: x(r, n, r)
-}), C = [
+}, O = ({ options: e, base: t, showLog: n, returnLog: r }) => ({
+	base: w(t, n, r),
+	options: T(e, n, r),
+	showLog: E(n, n, r),
+	returnLog: D(r, n, r)
+}), k = [
 	{
 		narration: "Prepend the serial column width to the table colgroup.",
 		destinationPath: {
@@ -251,7 +273,7 @@ var l = (e) => Array.isArray(e) ? e : [e], u = (e, t, n) => {
 		templateKey: "headerSerialCell",
 		func: null
 	}
-], w = [
+], A = [
 	{
 		narration: "Append the options column width to the table colgroup.",
 		destinationPath: {
@@ -300,8 +322,8 @@ var l = (e) => Array.isArray(e) ? e : [e], u = (e, t, n) => {
 		templateKey: "tdWithButtonSaveWarning",
 		func: null
 	}
-], T = ({ options: e = {}, base: t, showLog: n = !1, returnLog: r = [] } = {}) => {
-	let i = S({
+], j = ({ options: e = {}, base: t, showLog: n = !1, returnLog: r = [] } = {}) => {
+	let i = O({
 		options: e,
 		base: t,
 		showLog: n,
@@ -309,6 +331,6 @@ var l = (e) => Array.isArray(e) ? e : [e], u = (e, t, n) => {
 	});
 	if (!Object.values(i).every(Boolean)) return t;
 	let a = e, o = t, s = n, c = r;
-	return (a.showSerial || a.serial) && _(C, { base: o }, s, c), (a.showOptions || a.options) && _(w, { base: o }, s, c), a.showSearch, o;
+	return (a.showSerial || a.serial) && C(k, { base: o }, s, c), (a.showOptions || a.options) && C(A, { base: o }, s, c), a.showSearch, o;
 };
-export { T as default };
+export { j as default };
