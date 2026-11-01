@@ -322,7 +322,7 @@ var l = (e, t) => {
 		templateKey: "tdWithButtonSaveWarning",
 		func: null
 	}
-], j = ({ options: e = {}, base: t, showLog: n = !1, returnLog: r = [] } = {}) => {
+], j = (e, t) => !e || typeof e != "object" ? !1 : e.attributes?.["data-role"] === t || Array.isArray(e.children) && e.children.some((e) => j(e, t)), M = (e, t) => e.filter(({ destinationPath: e }) => j(t, e?.dataRole)), N = ({ options: e = {}, base: t, showLog: n = !1, returnLog: r = [] } = {}) => {
 	let i = O({
 		options: e,
 		base: t,
@@ -331,6 +331,6 @@ var l = (e, t) => {
 	});
 	if (!Object.values(i).every(Boolean)) return t;
 	let a = e, o = t, s = n, c = r;
-	return (a.showSerial || a.serial) && C(k, { base: o }, s, c), (a.showOptions || a.options) && C(A, { base: o }, s, c), a.showSearch, o;
+	return (a.showSerial || a.serial) && C(M(k, o), { base: o }, s, c), (a.showOptions || a.options) && C(M(A, o), { base: o }, s, c), a.showSearch, o;
 };
-export { j as default };
+export { N as default };

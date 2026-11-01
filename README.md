@@ -80,6 +80,10 @@ const decoratedSpec = buildOptions({
 - **`showOptions`** (`boolean`): Appends an options/action buttons column into the table.
 - **`showSearch`** (`boolean`): Injects search toolbar specifications.
 
+### Version 6
+
+The package entry point uses `src/v6`. It applies each serial/options instruction only when its target `data-role` exists in the supplied base. This allows body-only specifications to receive serial and options cells without requiring header, footer, or colgroup nodes. Version 5 remains available at `src/v5` with its original behavior.
+
 ---
 
 ## Architecture & Guard System (`v3`)
