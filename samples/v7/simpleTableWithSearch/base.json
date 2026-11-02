@@ -1,110 +1,74 @@
 {
-    "tagName": "table",
+    "tagName": "div",
     "attributes": {
-        "class": "table table-hover table-striped align-middle border mb-0"
+        "data-role": "table-parent"
     },
     "children": [
         {
-            "tagName": "colgroup",
+            "tagName": "table",
             "attributes": {
-                "data-role": "table-colgroup"
+                "class": "table table-hover table-striped align-middle border mb-0",
+                "data-role": "table"
             },
             "children": [
                 {
-                    "tagName": "col",
+                    "tagName": "colgroup",
                     "attributes": {
-                        "width": "300px"
-                    }
-                },
-                {
-                    "tagName": "col",
-                    "attributes": {
-                        "width": "200px"
-                    }
-                },
-                {
-                    "tagName": "col",
-                    "attributes": {
-                        "width": "100px"
-                    }
-                }
-            ]
-        },
-        {
-            "tagName": "thead",
-            "attributes": {
-                "class": "table-dark",
-                "data-role": "table-header"
-            },
-            "children": [
-                {
-                    "tagName": "tr",
-                    "attributes": {
-                        "data-role": "table-header-row"
+                        "data-role": "table-colgroup"
                     },
                     "children": [
                         {
-                            "tagName": "th",
-                            "textContent": "itemName",
+                            "tagName": "col",
                             "attributes": {
-                                "class": "py-3 px-3 fw-semibold text-uppercase small"
+                                "width": "300px"
                             }
                         },
                         {
-                            "tagName": "th",
-                            "textContent": "baseUnit",
+                            "tagName": "col",
                             "attributes": {
-                                "class": "py-3 px-3 fw-semibold text-uppercase small"
+                                "width": "200px"
                             }
                         },
                         {
-                            "tagName": "th",
-                            "textContent": "batches",
+                            "tagName": "col",
                             "attributes": {
-                                "class": "py-3 px-3 fw-semibold text-uppercase small"
+                                "width": "100px"
                             }
                         }
                     ]
-                }
-            ]
-        },
-        {
-            "tagName": "tbody",
-            "attributes": {
-                "data-role": "table-body"
-            },
-            "children": [
+                },
                 {
-                    "tagName": "tr",
+                    "tagName": "thead",
                     "attributes": {
-                        "class": "align-middle"
+                        "class": "table-dark",
+                        "data-role": "table-header"
                     },
                     "children": [
                         {
-                            "tagName": "td",
-                            "textContent": "0.09/30mm",
+                            "tagName": "tr",
                             "attributes": {
-                                "class": "py-3 px-3 text-secondary"
-                            }
-                        },
-                        {
-                            "tagName": "td",
-                            "textContent": "kgs",
-                            "attributes": {
-                                "class": "py-3 px-3 text-secondary"
-                            }
-                        },
-                        {
-                            "tagName": "td",
-                            "attributes": {
-                                "class": "py-2 px-3 text-center"
+                                "data-role": "table-header-row"
                             },
                             "children": [
                                 {
-                                    "tagName": "button",
-                                    "textContent": 1,
+                                    "tagName": "th",
+                                    "textContent": "itemName",
                                     "attributes": {
-                                        "class": "btn btn-primary btn-sm"
+                                        "class": "py-3 px-3 fw-semibold text-uppercase small"
+                                    }
+                                },
+                                {
+                                    "tagName": "th",
+                                    "textContent": "baseUnit",
+                                    "attributes": {
+                                        "class": "py-3 px-3 fw-semibold text-uppercase small"
+                                    }
+                                },
+                                {
+                                    "tagName": "th",
+                                    "textContent": "batches",
+                                    "attributes": {
+                                        "class": "py-3 px-3 fw-semibold text-uppercase small"
                                     }
                                 }
                             ]
@@ -112,37 +76,82 @@
                     ]
                 },
                 {
-                    "tagName": "tr",
+                    "tagName": "tbody",
                     "attributes": {
-                        "class": "align-middle"
+                        "data-role": "table-body"
                     },
                     "children": [
                         {
-                            "tagName": "td",
-                            "textContent": "item 2",
+                            "tagName": "tr",
                             "attributes": {
-                                "class": "py-3 px-3 text-secondary"
-                            }
-                        },
-                        {
-                            "tagName": "td",
-                            "textContent": "kgs",
-                            "attributes": {
-                                "class": "py-3 px-3 text-secondary"
-                            }
-                        },
-                        {
-                            "tagName": "td",
-                            "attributes": {
-                                "class": "py-2 px-3 text-center"
+                                "class": "align-middle"
                             },
                             "children": [
                                 {
-                                    "tagName": "button",
-                                    "textContent": 1,
+                                    "tagName": "td",
+                                    "textContent": "0.09/30mm",
                                     "attributes": {
-                                        "class": "btn btn-primary btn-sm"
+                                        "class": "py-3 px-3 text-secondary"
                                     }
+                                },
+                                {
+                                    "tagName": "td",
+                                    "textContent": "kgs",
+                                    "attributes": {
+                                        "class": "py-3 px-3 text-secondary"
+                                    }
+                                },
+                                {
+                                    "tagName": "td",
+                                    "attributes": {
+                                        "class": "py-2 px-3 text-center"
+                                    },
+                                    "children": [
+                                        {
+                                            "tagName": "button",
+                                            "textContent": 1,
+                                            "attributes": {
+                                                "class": "btn btn-primary btn-sm"
+                                            }
+                                        }
+                                    ]
+                                }
+                            ]
+                        },
+                        {
+                            "tagName": "tr",
+                            "attributes": {
+                                "class": "align-middle"
+                            },
+                            "children": [
+                                {
+                                    "tagName": "td",
+                                    "textContent": "item 2",
+                                    "attributes": {
+                                        "class": "py-3 px-3 text-secondary"
+                                    }
+                                },
+                                {
+                                    "tagName": "td",
+                                    "textContent": "kgs",
+                                    "attributes": {
+                                        "class": "py-3 px-3 text-secondary"
+                                    }
+                                },
+                                {
+                                    "tagName": "td",
+                                    "attributes": {
+                                        "class": "py-2 px-3 text-center"
+                                    },
+                                    "children": [
+                                        {
+                                            "tagName": "button",
+                                            "textContent": 1,
+                                            "attributes": {
+                                                "class": "btn btn-primary btn-sm"
+                                            }
+                                        }
+                                    ]
                                 }
                             ]
                         }

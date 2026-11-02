@@ -13,7 +13,6 @@ const start = () => {
     try {
         const spec = buildOptions({
             options: {
-                showSerial: true,
                 showSearch: true
             }, base
         });

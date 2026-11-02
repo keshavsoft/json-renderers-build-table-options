@@ -1,0 +1,16 @@
+[
+    {
+        "narration": "Prepend the search row to top of the table.",
+        "destinationPath": {
+            "fileName": "base",
+            "dataRole": "table-parent",
+            "filePath": [
+                "children"
+            ],
+            "action": "unshift"
+        },
+        "sourcePath": null,
+        "templateKey": "tableSearch",
+        "func": null
+    }
+]
